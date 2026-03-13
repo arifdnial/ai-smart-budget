@@ -18,7 +18,7 @@
 
 1. **Clone the Repository** (if you haven't already):
    ```bash
-   git clone https://github.com/<your-username>/ai-smart-budget.git
+   git clone https://github.com/arifdnial/ai-smart-budget.git
    cd ai-smart-budget
    ```
 
