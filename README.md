@@ -2,6 +2,10 @@
 
 **AI Smart Budget** is an intelligent financial management application designed specifically for Malaysian university students (focusing on UTHM students). It helps students manage their PTPTN/MARA allowances, track daily spending, categorize expenses, and get AI-powered financial advice.
 
+## 📹 Demo Video
+
+Watch the demo video here: [https://youtu.be/EeBcGOAi6gY](https://youtu.be/EeBcGOAi6gY)
+
 ## ✨ Features
 
 - **Dashboard**: Real-time overview of remaining balance, daily spending limits, and risk levels.
