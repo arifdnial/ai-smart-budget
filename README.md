@@ -6,6 +6,10 @@
 
 Watch the demo video here: [https://youtu.be/EeBcGOAi6gY](https://youtu.be/EeBcGOAi6gY)
 
+## 📄 Project Report
+
+View the full project report here: [AI Smart Budget Report (PDF)](docs/Report.pdf)
+
 ## ✨ Features
 
 - **Dashboard**: Real-time overview of remaining balance, daily spending limits, and risk levels.
