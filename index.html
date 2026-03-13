@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Smart Budget - Intelligent financial management for UTHM students. Manage PTPTN/MARA allowance, track daily spending, and get AI-powered budgeting advice." />
+  <title>AI Smart Budget | UTHM Student Financial Manager</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <rect width="40" height="40" rx="12" fill="url(#logo-grad)"/>
+              <path d="M12 28V16l8-6 8 6v12H22v-6h-4v6H12z" fill="white" fill-opacity="0.9"/>
+              <path d="M18 18h4v2h-4z" fill="url(#logo-grad)"/>
+              <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#FFD700"/><stop offset="1" stop-color="#0052B4"/></linearGradient></defs>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <h1>SmartBudget</h1>
+            <span>UTHM AI Finance</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard" id="nav-dashboard">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="allowance" id="nav-allowance">
+          <span class="nav-icon">💰</span>
+          <span class="nav-label">Allowance Setup</span>
+        </a>
+        <a href="#" class="nav-item" data-page="categories" id="nav-categories">
+          <span class="nav-icon">📋</span>
+          <span class="nav-label">Budget Categories</span>
+        </a>
+        <a href="#" class="nav-item" data-page="spending" id="nav-spending">
+          <span class="nav-icon">🛒</span>
+          <span class="nav-label">Daily Spending</span>
+        </a>
+        <a href="#" class="nav-item" data-page="repayment" id="nav-repayment">
+          <span class="nav-icon">🏦</span>
+          <span class="nav-label">Loan Repayment</span>
+        </a>
+        <a href="#" class="nav-item" data-page="settlement" id="nav-settlement">
+          <span class="nav-icon">🎯</span>
+          <span class="nav-label">Early Settlement</span>
+        </a>
+        <a href="#" class="nav-item" data-page="mara" id="nav-mara">
+          <span class="nav-icon">🎓</span>
+          <span class="nav-label">MARA Risk</span>
+        </a>
+        <a href="#" class="nav-item" data-page="predictions" id="nav-predictions">
+          <span class="nav-icon">🤖</span>
+          <span class="nav-label">AI Predictions</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile" id="user-profile-sidebar">
+          <div class="user-avatar">👤</div>
+          <div class="user-info">
+            <span class="user-name" id="sidebar-user-name">Student</span>
+            <span class="user-uni">UTHM</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Top Bar -->
+    <div class="mobile-topbar" id="mobile-topbar">
+      <button class="hamburger" id="hamburger-btn">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="mobile-logo">SmartBudget AI</div>
+      <button class="ai-chat-toggle-mobile" id="ai-chat-toggle-mobile">🤖</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+      <!-- Dashboard Page -->
+      <section class="page active" id="page-dashboard"></section>
+
+      <!-- Allowance Setup Page -->
+      <section class="page" id="page-allowance"></section>
+
+      <!-- Categories Page -->
+      <section class="page" id="page-categories"></section>
+
+      <!-- Spending Page -->
+      <section class="page" id="page-spending"></section>
+
+      <!-- Repayment Page -->
+      <section class="page" id="page-repayment"></section>
+
+      <!-- Settlement Page -->
+      <section class="page" id="page-settlement"></section>
+
+      <!-- MARA Risk Page -->
+      <section class="page" id="page-mara"></section>
+
+      <!-- Predictions Page -->
+      <section class="page" id="page-predictions"></section>
+    </main>
+
+    <!-- AI Chat Panel -->
+    <div class="ai-chat-panel" id="ai-chat-panel">
+      <div class="ai-chat-header">
+        <div class="ai-chat-title">
+          <span class="ai-dot"></span>
+          <h3>AI Financial Advisor</h3>
+        </div>
+        <button class="ai-chat-close" id="ai-chat-close">✕</button>
+      </div>
+      <div class="ai-chat-messages" id="ai-chat-messages">
+        <div class="ai-message bot">
+          <div class="ai-message-avatar">🤖</div>
+          <div class="ai-message-content">
+            <p>Assalamualaikum! 👋 Saya AI Financial Advisor anda. Saya boleh bantu anda dengan:</p>
+            <ul>
+              <li>Budget planning & analysis</li>
+              <li>PTPTN/MARA advice</li>
+              <li>Spending optimization</li>
+              <li>Emergency financial tips</li>
+            </ul>
+            <p>Tanya saya apa-apa tentang kewangan anda! 🇲🇾</p>
+          </div>
+        </div>
+      </div>
+      <div class="ai-chat-quick">
+        <button class="quick-btn" data-q="How much can I spend today?">💡 Daily limit?</button>
+        <button class="quick-btn" data-q="Analyze my spending pattern this week">📊 Spending analysis</button>
+        <button class="quick-btn" data-q="Tips to save money as UTHM student">💰 Saving tips</button>
+        <button class="quick-btn" data-q="When will my money run out at current rate?">⚠️ Money projection</button>
+      </div>
+      <div class="ai-chat-input">
+        <input type="text" id="ai-chat-input-field" placeholder="Tanya AI tentang kewangan anda..." />
+        <button id="ai-chat-send" class="ai-send-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Floating AI Chat Button -->
+    <button class="ai-fab" id="ai-fab">
+      <span class="ai-fab-icon">🤖</span>
+      <span class="ai-fab-pulse"></span>
+    </button>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Onboarding Modal -->
+    <div class="modal-overlay" id="onboarding-modal">
+      <div class="modal-card onboarding-card">
+        <div class="modal-header">
+          <h2>🇲🇾 Welcome to SmartBudget AI</h2>
+          <p>Setup your student financial profile</p>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="ob-name">Your Name</label>
+            <input type="text" id="ob-name" placeholder="e.g., Ahmad" />
+          </div>
+          <div class="form-group">
+            <label for="ob-source">Allowance Source</label>
+            <select id="ob-source">
+              <option value="ptptn">PTPTN</option>
+              <option value="mara">MARA</option>
+              <option value="jpa">JPA</option>
+              <option value="other">Other / Self-funded</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ob-amount">Semester Allowance (RM)</label>
+            <input type="number" id="ob-amount" placeholder="e.g., 3500" value="3500" />
+          </div>
+          <div class="form-group">
+            <label for="ob-duration">Semester Duration (months)</label>
+            <input type="number" id="ob-duration" placeholder="e.g., 4" value="4" />
+          </div>
+          <div class="form-group">
+            <label for="ob-housing">Housing Type</label>
+            <select id="ob-housing">
+              <option value="hostel">Hostel (Kolej Kediaman)</option>
+              <option value="rental">Sewa Luar</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ob-loan">Total PTPTN Loan (RM)</label>
+            <input type="number" id="ob-loan" placeholder="e.g., 25000" value="25000" />
+          </div>
+          <div class="form-group">
+            <label for="ob-cgpa">Current CGPA</label>
+            <input type="number" id="ob-cgpa" step="0.01" placeholder="e.g., 3.50" value="3.50" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary btn-lg" id="ob-submit">
+            🚀 Start Smart Budgeting
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
