@@ -8,7 +8,7 @@ Watch the demo video here: [https://youtu.be/EeBcGOAi6gY](https://youtu.be/EeBcG
 
 ## 📄 Project Report
 
-View the full project report here: [AI Smart Budget Report (PDF)](docs/Report.pdf)
+View the full project report here: [AI Smart Budget Report (PDF)](https://github.com/arifdnial/ai-smart-budget/blob/main/docs/Report.pdf)
 
 ## ✨ Features
 
